@@ -15,6 +15,7 @@ from flask import make_response
 
 # Flask app should start in global layout
 app = Flask(__name__)
+@app.route('/webhook', methods=['POST'])
 uni_data=''
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -36,13 +37,13 @@ client.connect("18.216.139.115", 1883, 60)
 
 
 
-@app.route('/webhook', methods=['POST'])
+
 def webhook():
     req = request.get_json(silent=True, force=True)
     print("Request:")
     print(json.dumps(req, indent=4))
     #res = processRequest(req)
-    speech = "Your Vehicle is in "+uni_data
+    speech = "Your Vehicle is in "+"Bellandur"
     print (speech)
     res= {
         "speech": speech,
