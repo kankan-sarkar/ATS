@@ -39,25 +39,9 @@ def processRequest(req):
     baseurl = "http://18.216.139.115:8888/"
     yql_url = baseurl 
     result = urlopen(yql_url).read()
-    data = result
-    res = makeWebhookResult(data)
-    return res
-
-
-def makeYqlQuery(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
-        return None
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
-
-
-def makeWebhookResult(data):
-    speech = "Your Vehicle Location is" + data
+    speech = "My Location is" + result
     print("Response:")
     print(speech)
-
     return {
         "speech": speech,
         "displayText": speech,
@@ -66,10 +50,7 @@ def makeWebhookResult(data):
         "source": "apiai-weather-webhook-sample"
     }
 
-
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
-
     print("Starting app on port %d" % port)
-
-app.run(debug=False, port=port, host='0.0.0.0')
+    app.run(debug=False, port=port, host='0.0.0.0')
