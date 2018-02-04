@@ -39,7 +39,7 @@ def processRequest(req):
     baseurl = "http://18.216.139.115:8888/"
     yql_url = baseurl 
     result = urlopen(yql_url).read()
-    speech = "My Location is" + "sjdjhsdh"
+    speech = "My Location is" + result.decode("utf-8");
     print("Response:")
     print(speech)
     return {
