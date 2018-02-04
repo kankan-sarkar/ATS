@@ -54,8 +54,6 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    if loc is None:
-        return {}
     speech = "Your Vehicle Location is" + data
     print("Response:")
     print(speech)
