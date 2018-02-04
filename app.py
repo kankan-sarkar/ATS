@@ -37,7 +37,7 @@ def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     baseurl = "http://18.216.139.115/get_location.php"
-    yql_url = baseurl + "&format=json"
+    yql_url = baseurl 
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
