@@ -34,8 +34,6 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
-        return {}
     baseurl = "http://18.216.139.115:8888/"
     yql_url = baseurl 
     result = urlopen(yql_url).read()
