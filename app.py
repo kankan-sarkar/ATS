@@ -36,7 +36,7 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
-    baseurl = "http://18.216.139.115/get_location.php"
+    baseurl = "http://18.216.139.115:8888/"
     yql_url = baseurl 
     result = urlopen(yql_url).read()
     data = json.loads(result)
@@ -54,10 +54,9 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    loc = data.get('location')
     if loc is None:
         return {}
-    speech = "My Location is" + loc
+    speech = "Your Vehicle Location is" + data
     print("Response:")
     print(speech)
 
