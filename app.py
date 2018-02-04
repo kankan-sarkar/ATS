@@ -39,7 +39,7 @@ def processRequest(req):
     baseurl = "http://18.216.139.115:8888/"
     yql_url = baseurl 
     result = urlopen(yql_url).read()
-    data = json.loads(result)
+    data = result
     res = makeWebhookResult(data)
     return res
 
